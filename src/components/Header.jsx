@@ -8,6 +8,13 @@ export const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false) // state for the hamburger menu
     const [desktopView, setDesktopView] = useState(window.innerWidth >= 900) // state to evaluate the width of viewport and will change every time the value changes, using useEffect
 
+    // The following state chand function changes the color of the Header menu buttons depending on which is clicked
+
+    const [activeMenu, setActiveMenu] = useState("home")
+    const changeMenu = (menu) => {
+        setActiveMenu(menu)
+    }
+
     useEffect(() => {
         function watchWidth() {
             setDesktopView(window.innerWidth >= 900)
@@ -42,9 +49,11 @@ export const Header = () => {
             </section>
             <section className="absolute right-1/2 translate-x-1/2">
                 <img 
-                src={Obi} 
-                alt="Obi Wan Kenobi" 
-                className="w-20 md:w-32 "/>
+                    src={Obi} 
+                    alt="Obi Wan Kenobi" 
+                    className="w-20 md:w-32" 
+                    style={{marginTop: window.innerWidth < 768? "3px": ""}}
+                />
             </section>
             <section className="absolute top-0 right-0 md:h-full">
                 {/* The menu icons will appear only when width is < 900 */}
@@ -60,9 +69,24 @@ export const Header = () => {
                     <div className="w-10 h-1 bg-yellow-300 rounded-lg -rotate-45 translate-y-2"></div>
                 </div>}
                 {(desktopView || menuOpen) && <ul className="bg-black flex flex-col items-center justify-center gap-16 px-5 py-7 w-screen h-screen fixed top-0 right-0 opacity-90 z-10 md:bg-transparent md:w-auto md:h-auto md:flex-row md:gap-5 md:h-full md:static">
-                    <li className="text-3xl px-5 rounded-3xl transition duration-500 ease-in-out py-2 font-bold hover:bg-white/50 hover:-translate-x-1 hover:translate-y-1 md:text-xl"><Link to="#home">Home</Link></li>
-                    <li className="text-3xl px-5 rounded-3xl transition duration-500 ease-in-out py-2 hover:bg-white/50 hover:-translate-x-1 hover:translate-y-1 md:text-xl font-bold"><Link to="#">Movies</Link></li>
-                    <li className="text-3xl px-5 rounded-3xl transition duration-500 ease-in-out py-2 hover:bg-white/50 hover:-translate-x-1 hover:translate-y-1 md:text-xl font-bold"><Link to="#">Characters</Link></li>
+                    <li 
+                        className={`text-3xl px-5 rounded-3xl transition duration-500 ease-in-out py-2 font-bold hover:bg-white/50 hover:-translate-x-1 hover:translate-y-1 md:text-xl ${activeMenu == "home" ? "text-yellow-300" : "text-white"}`} 
+                        onClick={() => {changeMenu("home")}}
+                    >
+                        <Link to="#home">Home</Link>
+                    </li>
+                    <li 
+                        className={`text-3xl px-5 rounded-3xl transition duration-500 ease-in-out py-2 hover:bg-white/50 hover:-translate-x-1 hover:translate-y-1 md:text-xl font-bold ${activeMenu == "movies" ? "text-yellow-300" : "text-white"}`} 
+                        onClick={() => {changeMenu("movies")}}
+                    >
+                        <Link to="#">Movies</Link>
+                    </li>
+                    <li 
+                        className={`text-3xl px-5 rounded-3xl transition duration-500 ease-in-out py-2 hover:bg-white/50 hover:-translate-x-1 hover:translate-y-1 md:text-xl font-bold ${activeMenu == "characters" ? "text-yellow-300" : "text-white"}`} 
+                        onClick={() => {changeMenu("characters")}}
+                    >
+                        <Link to="#">Characters</Link>
+                    </li>
                 </ul>}
             </section>
         </header>

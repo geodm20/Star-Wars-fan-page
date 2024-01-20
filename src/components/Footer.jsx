@@ -24,19 +24,44 @@ export const Footer = () => {
             </section>
             <div className="bg-white absolute h-full w-full opacity-10 top-0 right-0 -z-10"></div>
             <section className="flex justify-center items-center w-1/2 flex-wrap flex my-5">
-                <a href="https://www.tiktok.com/@starwars" target="_blank" rel="noopener noreferrer" className="w-8 m-3 hover:bg-white/30 rounded-lg transition duration-500 ease-in-out  hover:-translate-y-2 md:mr-5">
+                <a 
+                    href="https://www.tiktok.com/@starwars" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="w-8 m-3 hover:bg-white/30 rounded-lg transition duration-500 ease-in-out  hover:-translate-y-2 md:mr-5"
+                >
                     <img src={Tiktok} alt="Tiktok icon" />
                 </a>
-                <a href="https://www.instagram.com/starwars/" target="_blank" rel="noopener noreferrer" className="w-8 m-3 hover:bg-white/30 rounded-lg transition duration-500 ease-in-out  hover:-translate-y-2 md:mr-5">
+                <a 
+                    href="https://www.instagram.com/starwars/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="w-8 m-3 hover:bg-white/30 rounded-lg transition duration-500 ease-in-out  hover:-translate-y-2 md:mr-5"
+                >
                     <img src={Instagram} alt="Instagram icon" />
                 </a>
-                <a href="https://twitter.com/starwars" target="_blank" rel="noopener noreferrer" className="w-8 m-3 hover:bg-white/30 rounded-lg transition duration-500 ease-in-out  hover:-translate-y-2 md:mr-5">
+                <a 
+                    href="https://twitter.com/starwars" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="w-8 m-3 hover:bg-white/30 rounded-lg transition duration-500 ease-in-out  hover:-translate-y-2 md:mr-5"
+                >
                     <img src={X} alt="X icon" />
                 </a>
-                <a href="https://www.facebook.com/StarWars" target="_blank" rel="noopener noreferrer" className="w-8 m-3 hover:bg-white/30 rounded-lg transition duration-500 ease-in-out  hover:-translate-y-2 md:mr-5">
+                <a 
+                    href="https://www.facebook.com/StarWars" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="w-8 m-3 hover:bg-white/30 rounded-lg transition duration-500 ease-in-out  hover:-translate-y-2 md:mr-5"
+                >
                     <img src={Facebook} alt="Facebook icon" />
                 </a>
-                <a href="https://www.youtube.com/user/starwars" target="_blank" rel="noopener noreferrer" className="w-8 m-3 hover:bg-white/30 rounded-lg transition duration-500 ease-in-out hover:-translate-y-2 ">
+                <a 
+                    href="https://www.youtube.com/user/starwars" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="w-8 m-3 hover:bg-white/30 rounded-lg transition duration-500 ease-in-out hover:-translate-y-2 "
+                >
                     <img src={Youtube} alt="Youtube icon" />
                 </a>
             </section>
