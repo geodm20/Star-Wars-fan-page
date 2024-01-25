@@ -2,48 +2,51 @@ import React, { useRef, useEffect, useState } from "react"
 import "react-intersection-observer"
 import Background from "../assets/Background.jpg"
 import Video from "../assets/Darth-Kenobi.mp4"
+import { Footer } from "./Footer"
+import styles from "../animations/stars-bg.module.css";
+
+// The following code is related to Intersection Observer API to make animations based on the visibility of elements on screen
+
+export const useIntersectionObserver = () => {
+    const [observed, isObserved] = useState(false);
+    const [hasIntersected, setHasIntersected] = useState(false); // to stop the observation after the first time
+    const eRef = useRef();
+
+    useEffect(() => {
+        const options = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.5,
+          };
+        
+        const callback = (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting && !hasIntersected) { // entry.isIntersecting will be true or false
+                    isObserved(true) // if entry is being observed, state is updated
+                    setHasIntersected(true)
+                } 
+            });
+        };
+        
+        const observer = new IntersectionObserver(callback, options);
+    
+        if (eRef.current) {
+            observer.observe(eRef.current)
+        };
+
+        return () => {
+            if (eRef.current) {
+                observer.unobserve(eRef.current);
+            }
+        }
+
+    }, [])
+
+    return [eRef, observed]
+}
 
 export const Body = () => {
 
-    // The following code is related to Intersection Observer API to make animations based on the visibility of elements on screen
-
-    const useIntersectionObserver = () => {
-        const [observed, isObserved] = useState(false);
-        const [hasIntersected, setHasIntersected] = useState(false); // to stop the observation after the first time
-        const eRef = useRef();
-
-        useEffect(() => {
-            const options = {
-                root: null,
-                rootMargin: "0px",
-                threshold: 0.5,
-              };
-            
-            const callback = (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting && !hasIntersected) { // entry.isIntersecting will be true or false
-                        isObserved(true) // if entry is being observed, state is updated
-                        setHasIntersected(true)
-                    } 
-                });
-            };
-            
-            const observer = new IntersectionObserver(callback, options);
-        
-            if (eRef.current) {
-                observer.observe(eRef.current)
-            };
-    
-            return () => {
-                if (eRef.current) {
-                    observer.unobserve(eRef.current);
-                }
-            }
-
-        }, [])
-
-        return [eRef, observed]
-    }
     
     // eRef is used as "ref" in the animated elements being observed
 
@@ -54,14 +57,15 @@ export const Body = () => {
     const [eRef5, observed5] = useIntersectionObserver();
     
     return (
-        <main className="">
+        <>
+        <main>
             <section
                 className="min-h-screen bg-cover bg-no-repeat bg-center flex items-center justify-center relative" 
                 style={{backgroundImage: `url(${Background})`}}
             >
                 <div
                     ref={eRef5}
-                    className={`absolute h-full w-full bg-black opacity-35 ${observed5? "opacity-50 transition duration-1000 ease-in" : "opacity-100"}`}
+                    className={`absolute top-0 left-0 h-full w-full bg-black ${observed5 ? "opacity-50 transition duration-2000 ease-in" : "opacity-100"}`}
                 >
                 </div>
                 <h1 
@@ -71,7 +75,7 @@ export const Body = () => {
                 >Welcome to my Star Wars fan page!
                 </h1>
             </section>
-            <section className="flex flex-col items-center justify-center">
+            <section className="flex flex-col items-center justify-center relative">
                 <h2 
                     ref={eRef2} 
                     className={`text-2xl font-bold text-yellow-300 mt-5 sm:text-4xl ${observed2? "opacity-1 translate-y-0 transition duration-1000 ease-out" : "opacity-0 -translate-y-14"}`}
@@ -93,5 +97,7 @@ export const Body = () => {
                 </video>
             </section>
         </main>
+        <Footer />
+        </>
     )
 }

@@ -8,7 +8,7 @@ import Youtube from "../assets/Youtube.png"
 export const Footer = () => {
 
     return (
-        <footer className="w-full flex justify-between relative">
+        <footer className="w-full flex justify-between relative mt-10">
             <section className="w-1/2 flex justify-center items-center text-center my-5 ">
                 <ul className="font-bold md:flex-row md:flex">
                     <li className="hover:bg-white/50 px-2 py-1 rounded-lg mb-2 transition duration-500 ease-in-out md:mr-7">

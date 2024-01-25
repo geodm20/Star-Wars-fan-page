@@ -13,6 +13,7 @@ export const Header = () => {
     const [activeMenu, setActiveMenu] = useState("home")
     const changeMenu = (menu) => {
         setActiveMenu(menu)
+        turnOffMenu() // turns off the menu everytime any Menu Option is clicked
     }
 
     useEffect(() => {
@@ -40,7 +41,7 @@ export const Header = () => {
     return (
         <header className="flex justify-between w-full relative top-0 right-0">
             <section className="p-3 w-1/3 h-full" >
-                <a href="#" className="">
+                <a href="#home" className="">
                     <img 
                     src={StarWarsLogo} 
                     alt="Star Wars Logo" 
@@ -63,29 +64,41 @@ export const Header = () => {
                     <div className="w-10 h-1 bg-yellow-300 mb-2 rounded-lg"></div>
                     <div className="w-10 h-1 bg-yellow-300 rounded-lg"></div>
                 </div>}
-                {(!desktopView && menuOpen) && <div className="cursor-pointer absolute top-8 right-6 transition z-20" onClick = {turnOffMenu}>
+                {(!desktopView && menuOpen) && <div className="cursor-pointer top-8 right-6 fixed transition z-20 fixed" onClick = {turnOffMenu}>
                     {/* This div is for the "X" button of hamburger menu. Will be rendered only if menuOpen is true */}
                     <div className="w-10 h-1 bg-yellow-300 rounded-lg rotate-45 translate-y-3"></div>
                     <div className="w-10 h-1 bg-yellow-300 rounded-lg -rotate-45 translate-y-2"></div>
                 </div>}
-                {(desktopView || menuOpen) && <ul className="bg-black flex flex-col items-center justify-center gap-16 px-5 py-7 w-screen h-screen fixed top-0 right-0 opacity-90 z-10 md:bg-transparent md:w-auto md:h-auto md:flex-row md:gap-5 md:h-full md:static">
+                {(desktopView || menuOpen) && <ul className="bg-black flex flex-col items-center justify-center gap-16 px-5 py-7 w-screen h-screen fixed -top-0 right-0 opacity-90 z-10 md:bg-transparent md:w-auto md:h-auto md:flex-row md:gap-5 md:h-full md:static">
                     <li 
-                        className={`text-3xl px-5 rounded-3xl transition duration-500 ease-in-out py-2 font-bold hover:bg-white/50 hover:-translate-x-1 hover:translate-y-1 md:text-xl ${activeMenu == "home" ? "text-yellow-300" : "text-white"}`} 
+                        className={`text-3xl rounded-3xl transition duration-500 ease-in-out py-2 font-bold hover:bg-white/50 hover:-translate-x-1 hover:translate-y-1 md:text-xl ${activeMenu == "home" ? "text-yellow-300" : "text-white"}`} 
                         onClick={() => {changeMenu("home")}}
                     >
-                        <Link to="#home">Home</Link>
+                        <Link 
+                            to="/"
+                            className="px-5 py-2"
+                        >Home
+                        </Link>
                     </li>
                     <li 
-                        className={`text-3xl px-5 rounded-3xl transition duration-500 ease-in-out py-2 hover:bg-white/50 hover:-translate-x-1 hover:translate-y-1 md:text-xl font-bold ${activeMenu == "movies" ? "text-yellow-300" : "text-white"}`} 
+                        className={`text-3xl rounded-3xl transition duration-500 ease-in-out py-2 hover:bg-white/50 hover:-translate-x-1 hover:translate-y-1 md:text-xl font-bold ${activeMenu == "movies" ? "text-yellow-300" : "text-white"}`} 
                         onClick={() => {changeMenu("movies")}}
                     >
-                        <Link to="#">Movies</Link>
+                        <Link 
+                            to="/movies" 
+                            className="px-5 py-2"
+                        >Movies
+                        </Link>
                     </li>
                     <li 
-                        className={`text-3xl px-5 rounded-3xl transition duration-500 ease-in-out py-2 hover:bg-white/50 hover:-translate-x-1 hover:translate-y-1 md:text-xl font-bold ${activeMenu == "characters" ? "text-yellow-300" : "text-white"}`} 
+                        className={`text-3xl rounded-3xl transition duration-500 ease-in-out py-2 hover:bg-white/50 hover:-translate-x-1 hover:translate-y-1 md:text-xl font-bold ${activeMenu == "characters" ? "text-yellow-300" : "text-white"}`} 
                         onClick={() => {changeMenu("characters")}}
                     >
-                        <Link to="#">Characters</Link>
+                        <Link 
+                            to="#" 
+                            className="px-5 py-2"
+                        >Characters
+                        </Link>
                     </li>
                 </ul>}
             </section>

@@ -8,6 +8,9 @@ export default {
     extend: {
       fontFamily: {
         "roboto": ["Roboto", "sans-serif"]
+      },
+      transitionDuration: {
+        "2000": "2000ms"
       }
     },
   },
