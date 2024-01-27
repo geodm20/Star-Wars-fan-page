@@ -11,6 +11,10 @@ export default {
       },
       transitionDuration: {
         "2000": "2000ms"
+      },
+      spacing: {
+        '128': '32rem',
+        '140': ''
       }
     },
   },

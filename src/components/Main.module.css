@@ -1,0 +1,45 @@
+/* Hovered styles, applied when isSelected is not equal to the character id */
+
+.list:hover {
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.40) 46%, black 60%);
+    cursor: pointer; 
+}
+
+.list:hover .text {
+    color: rgb(253 224 71);
+}
+
+.list:hover .id, .list:hover .text {
+    font-weight: bold;
+}
+
+/* Clicked styles, applied when isSelected is equal to the character id */
+
+.listClicked {
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.30) 46%, black 60%);
+    cursor: pointer; 
+}
+
+.textClicked {
+    color: rgb(253 224 71);
+}
+
+.textClicked, .idClicked {
+    font-weight: bold;
+}
+
+/* Styles for scrollbar in Chrome and Safari */
+
+::-webkit-scrollbar {
+    width: 5px; /* Ancho de la barra de desplazamiento */
+}
+  
+::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.40);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(253 224 71);
+    border-radius: 6px;
+}

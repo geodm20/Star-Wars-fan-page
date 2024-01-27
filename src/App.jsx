@@ -4,6 +4,8 @@ import { Header } from "./components/Header"
 import { Home } from "./pages/Home"
 import { Movies } from "./pages/Movies"
 import { MovieDetails } from "./pages/MovieDetails"
+import { Characters } from "./pages/Characters"
+import { Error } from "./pages/Error"
 
 function App() {
 
@@ -18,6 +20,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
         <Route path="/movies/:movieId" element={<MovieDetails />} />
+        <Route path="/characters" element={<Characters />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </div>
   )

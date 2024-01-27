@@ -33,7 +33,7 @@ export const MoviesBox = () => {
 
   return (
     <>
-      <main className="flex flex-col justify-center items-center">
+      <main className="flex flex-col justify-center items-center mb-10">
         <h1 
           ref={eRef}
           className={`text-4xl font-bold my-10 ${observed ? "opacity-100 transition duration-1000 ease-in" : "opacity-0 transition duration-1000 ease-in"}`}

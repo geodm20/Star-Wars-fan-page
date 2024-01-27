@@ -55,7 +55,8 @@ export const Body = () => {
     const [eRef3, observed3] = useIntersectionObserver();
     const [eRef4, observed4] = useIntersectionObserver();
     const [eRef5, observed5] = useIntersectionObserver();
-    
+    const [eRef6, observed6] = useIntersectionObserver();
+     
     return (
         <>
         <main>
@@ -75,7 +76,7 @@ export const Body = () => {
                 >Welcome to my Star Wars fan page!
                 </h1>
             </section>
-            <section className="flex flex-col items-center justify-center relative">
+            <section className="flex flex-col items-center justify-center relative mb-10">
                 <h2 
                     ref={eRef2} 
                     className={`text-2xl font-bold text-yellow-300 mt-5 sm:text-4xl ${observed2? "opacity-1 translate-y-0 transition duration-1000 ease-out" : "opacity-0 -translate-y-14"}`}
@@ -90,11 +91,22 @@ export const Body = () => {
                     ref={eRef4}
                     controls 
                     muted 
-                    className={`object-cover aspect-square h-80 w-5/6 -mt-10 sm:mt-0 sm:h-96 mb-10 ${observed4? "opacity-1 translate-x-0 transition duration-1000 ease-in-out" : "opacity-0 -translate-x-32"}`}
+                    className={`object-cover aspect-square h-80 w-5/6 -mt-10 sm:mt-0 sm:h-96 ${observed4? "opacity-1 translate-x-0 transition duration-1000 ease-in-out" : "opacity-0 -translate-x-32"}`}
                     style={{borderRadius: "50px", height: window.innerWidth >= 768 ? "500px" : "320px"}}
                 >
                     <source src={Video}/>
                 </video>
+                <p  
+                    ref={eRef6} 
+                    className={`mx-12 my-7 md:mx-40 md:text-lg ${observed6? "opacity-1 translate-y-0 transition duration-1000 ease-in" : "opacity-0 translate-y-14"}`}
+                >
+                    This page only contains Star Wars information prior to Disney adquisition. Latest movies and characters are not contained here. Most of the information was taken from the Star Wars API <a href="https://swapi.dev/" className="font-bold text-yellow-300" target="_blank">(SWAPI)</a>, while images, from <a href="https://starwars-visualguide.com/#/" className="font-bold text-yellow-300" target="_blank">Star Wars: A Visual Guide</a>; that data was modified to fit my needs on this web page.
+                </p>
+                <p ref={eRef6} 
+                    className={`mx-12 my-5 md:mx-40 md:text-lg text-center ${observed6? "opacity-1 translate-y-0 transition duration-1000 ease-in" : "opacity-0 translate-y-14"}`}
+                >
+                    Made by <a href="https://www.linkedin.com/in/georgematos20/" className="font-bold text-yellow-300" target="_blank">George Matos</a>.
+                </p>
             </section>
         </main>
         <Footer />

@@ -40,13 +40,16 @@ export const Header = () => {
 
     return (
         <header className="flex justify-between w-full relative top-0 right-0">
-            <section className="p-3 w-1/3 h-full" >
-                <a href="#home" className="">
+            <section className="p-3" >
+                <Link 
+                    to="/"
+                    onClick={() => {changeMenu("home")}}
+                >
                     <img 
                     src={StarWarsLogo} 
                     alt="Star Wars Logo" 
-                    className="w-32 md:w-44 cursor-pointer"/>
-                </a>
+                    className="w-28 md:w-44 cursor-pointer"/>
+                </Link>
             </section>
             <section className="absolute right-1/2 translate-x-1/2">
                 <img 
@@ -95,7 +98,7 @@ export const Header = () => {
                         onClick={() => {changeMenu("characters")}}
                     >
                         <Link 
-                            to="#" 
+                            to="/characters" 
                             className="px-5 py-2"
                         >Characters
                         </Link>
